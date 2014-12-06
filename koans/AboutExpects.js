@@ -5,6 +5,16 @@ describe("About Expects", function() {
     expect(false).toBeTruthy(); //This should be true
   });
 
+  // Sometimes we will ask you to fill in the values.
+  it("should have filled in values", function () {
+    expect(1 + 1).toEqual(FILL_ME_IN);
+  });
+
+  // Sometimes we will ask you a trick question.
+  it("should understand different type behaviors", function () {
+    expect('1' + '1').toEqual(FILL_ME_IN);
+  });
+
   // To understand reality, we must compare our expectations against reality.
   it("should expect equality", function () {
     var expectedValue = FILL_ME_IN;
@@ -18,16 +28,17 @@ describe("About Expects", function() {
     var expectedValue = FILL_ME_IN;
     var actualValue = 1 + 1;
 
-    // toEqual() compares using common sense equality.
+    // toEqual() compares using type-converting equality.
     expect(actualValue).toEqual(expectedValue);
   });
 
   // Sometimes you need to be really exact about what you "type."
   it("should assert equality with ===", function () {
-    var expectedValue = '2';
+    var expectedValue = FILL_ME_IN;
     var actualValue = (1 + 1).toString();
 
-    // hint: toBe() will always use === to compare.
+    // toBe() compares using strict equality
+    // further reading: http://stackoverflow.com/a/523647/626048
     expect(actualValue).toBe(expectedValue);
   });
 
@@ -36,16 +47,6 @@ describe("About Expects", function() {
     var expectedValue = '2';
     var actualValue = 2;
 
-    expect(actualValue == expectedValue).toBeTruthy();
-  });
-
-  // Sometimes we will ask you to fill in the values.
-  it("should have filled in values", function () {
-    expect(1 + 1).toEqual(FILL_ME_IN);
-  });
-
-  // Sometimes we will ask you a trick question.
-  it("should understand different type behaviors", function () {
-    expect('1' + '1').toEqual(FILL_ME_IN);
+    expect(actualValue === expectedValue).toBeTruthy();
   });
 });
