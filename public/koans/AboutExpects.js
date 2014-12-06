@@ -2,7 +2,7 @@ describe("About Expects", function() {
 
   // We shall contemplate truth by testing reality, via spec expectations.
   it("should expect true", function() {
-    expect(false).toBeTruthy(); //This should be true
+    expect(true).toBeTruthy(); //This should be true
   });
 
   // Sometimes we will ask you to fill in the values.

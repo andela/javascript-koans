@@ -45,7 +45,7 @@ JsKoansReporter.prototype.reportRunnerStarting = function(runner) {
   for (var i = 0; i < suites.length; i++) {
     var suite = suites[i];
     var suiteDiv = this.createDom('div', { className: 'suite' },
-        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, 
+        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) },
           this.getSuiteDescription(suite)));
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
@@ -93,10 +93,10 @@ JsKoansReporter.prototype.reportRunnerResults = function(runner) {
   var specsCount = runner.specs().length;
   var showPassed;
   var showAllFailed;
-  
-  var progress = this.createDom('div', {}, 
+
+  var progress = this.createDom('div', {},
       this.createDom('div', { className: 'enlightenment-' + status }, enlightenmentMessage),
-      this.createDom('div', { className: 'completion' }, 
+      this.createDom('div', { className: 'completion' },
         this.createDom('div', {},
           this.createDom('span', { className: 'key' }, "Subjects covered: "),
           this.createDom('span', { className: 'value' }, this.noOfSubjects - this.failedSubjects + "/" + this.noOfSubjects)
@@ -111,10 +111,10 @@ JsKoansReporter.prototype.reportRunnerResults = function(runner) {
           this.createDom('label', { "for": "__jsKoans_showAllFailed__" }, " Look ahead"),
           showAllFailed = this.createDom('input', { id: "__jsKoans_showAllFailed__", type: 'checkbox' })
           )
-        )      
+        )
       );
   this.runnerMessageSpan.replaceChild(this.createDom('div', { className: 'description', href: '?'}, progress), this.runnerMessageSpan.firstChild);
-  
+
   var self = this;
   showPassed.onchange = function(evt) {
     if (evt.target.checked) {
@@ -136,7 +136,7 @@ JsKoansReporter.prototype.reportSuiteResults = function(suite) {
   var results = suite.results();
   var status = results.passed() ? 'passed' : 'failed';
   if (results.totalCount == 0 || this.failedSubjects > 0) {
-    status += '-skipped';  
+    status += '-skipped';
   }
 
   if (suite.parentSuite == null) {
@@ -156,7 +156,7 @@ JsKoansReporter.prototype.reportSpecResults = function(spec) {
   var results = spec.results();
   var status = results.passed() ? 'passed' : 'failed';
   var skipStatus = status;
-  
+
   if (results.skipped || this.failedSpecs > 0) {
     skipStatus += '-skipped';
   }
@@ -183,6 +183,16 @@ JsKoansReporter.prototype.reportSpecResults = function(spec) {
 
   for (var i = 0; i < resultItems.length; i++) {
     var result = resultItems[i];
+    var props = {
+      actual: String(result.actual),
+      contains: String(result.contains),
+      expected: String(result.expected),
+      matcherName: String(result.matcherName),
+      message: String(result.message),
+      passed: result.passed_,
+      type: result.type
+    };
+    Reporter.push(props);
 
     if (result.type == 'expect' && result.passed && !result.passed()) {
       messagesDiv.appendChild(
@@ -211,7 +221,7 @@ JsKoansReporter.prototype.reportSpecResults = function(spec) {
   }
 
   this.suiteDivs[spec.suite.id].appendChild(specDiv);
-  
+
 };
 
 JsKoansReporter.prototype.log = function() {

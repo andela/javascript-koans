@@ -4,33 +4,38 @@
 <head>
   <title>Javascript Koans</title>
   <link rel="stylesheet" type="text/css" href="lib/jasmine/jskoans-jasmine.css">
+
+  <script type="text/javascript" src="lib/lodash/dist/lodash.underscore.js"></script>
+  <script type="text/javascript" src="lib/angular/angular.js"></script>
+  <script type="text/javascript" src="lib/firebase/firebase.js"></script>
+
   <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
   <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
   <script type="text/javascript" src="lib/jasmine/jskoans-jasmine-html.js"></script>
-  
-  <script type="text/javascript" src="lib/underscore-min.js"></script>
+
+  <script type="text/javascript" src="lib/usnderscore-min.js"></script>
 
   <script type="text/javascript" src="lib/FILL_ME_IN.js"></script>
 
   <script type="text/javascript" src="koans/AboutExpects.js"></script>
-  <script type="text/javascript" src="koans/AboutNumbers.js"></script>
-  <script type="text/javascript" src="koans/AboutStrings.js"></script>
   <script type="text/javascript" src="koans/AboutObjects.js"></script>
-  <script type="text/javascript" src="koans/AboutArrays.js"></script>
   <script type="text/javascript" src="koans/AboutControlStructures.js"></script>
+  <script type="text/javascript" src="koans/AboutArrays.js"></script>
   <script type="text/javascript" src="koans/AboutFunctions.js"></script>
   <script type="text/javascript" src="koans/AboutMutability.js"></script>
   <script type="text/javascript" src="koans/AboutHigherOrderFunctions.js"></script>
-  <script type="text/javascript" src="koans/AboutInheritance.js"></script>
   <script type="text/javascript" src="koans/AboutApplyingWhatWeHaveLearnt.js"></script>
 
+  <script type="text/javascript" src="application.js"></script>
 </head>
-<body>
-
-<script type="text/javascript">
-  jasmine.getEnv().addReporter(new JsKoansReporter());
-  jasmine.getEnv().execute();
-</script>
-
+<body ng-app="AndelaKoans">
+<div ng-controller="ResultsCtrl">
+  <table>
+    <tr ng-repeat="student in cohort">
+      <td>Student:</td>
+      <td ng-repeat="result in _.last(student.results)" ng-class="{passed: result.passed}">x</td>
+    </tr>
+  </table>
+</div>
 </body>
 </html>
