@@ -7,12 +7,12 @@ describe("About Expects", function() {
 
   // Sometimes we will ask you to fill in the values.
   it("should have filled in values", function () {
-    expect(1 + 1).toEqual(FILL_ME_IN);
+    expect(1 + 1).toEqual(2);
   });
 
   // Sometimes we will ask you a trick question.
   it("should understand different type behaviors", function () {
-    expect('1' + '1').toEqual(FILL_ME_IN);
+    expect('1' + '1').toEqual('11');
   });
 
   // To understand reality, we must compare our expectations against reality.

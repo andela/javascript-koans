@@ -5,7 +5,7 @@
   <title>Javascript Koans</title>
   <link rel="stylesheet" type="text/css" href="lib/jasmine/jskoans-jasmine.css">
 
-  <script type="text/javascript" src="lib/lodash/dist/lodash.underscore.js"></script>
+  <script type="text/javascript" src="lib/lodash/dist/lodash.js"></script>
   <script type="text/javascript" src="lib/angular/angular.js"></script>
   <script type="text/javascript" src="lib/firebase/firebase.js"></script>
 
@@ -27,13 +27,25 @@
   <script type="text/javascript" src="koans/AboutApplyingWhatWeHaveLearnt.js"></script>
 
   <script type="text/javascript" src="application.js"></script>
+  <style>
+  td.passed {
+    background-color: green;
+  }
+  </style>
 </head>
 <body ng-app="AndelaKoans">
 <div ng-controller="ResultsCtrl">
-  <table>
-    <tr ng-repeat="student in cohort">
-      <td>Student:</td>
-      <td ng-repeat="result in _.last(student.results)" ng-class="{passed: result.passed}">x</td>
+  <table style="width: 100%">
+    <tr ng-repeat="(key, student) in cohort" ng-init="last = latest(student.results)">
+      <td ng-bind="key"></td>
+      <td>
+        <table style="width: 100%">
+          <tr ng-repeat="(timestamp, resultset) in student.results">
+            <td ng-bind="timestamp"></td>
+            <td ng-repeat="result in resultset" ng-class="{passed: result.passed}">{{result.passed}}</td>
+          </tr>
+        </table>
+      </td>
     </tr>
   </table>
 </div>

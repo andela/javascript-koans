@@ -30,18 +30,21 @@ AndelaKoans.factory('Reporter', ['Refs',
   function(Refs) {
     return {
       push: function(result, cb) {
-        Refs.latest.push(result, function() {
-          Refs.history.push(result, cb);
-        });
+        Refs.history.push(result, cb);
       }
     }
   }
 ]);
 
-AndelaKoans.controller('ResultsCtrl', ['$scope','Refs', function($scope, Refs, Reporter) {
+AndelaKoans.controller('ResultsCtrl', ['$scope','Refs', function($scope, Refs) {
+  $scope.latest = function(results) {
+    window.values = _.values(results);
+    return _.last(values);
+  }
+
   Refs.root.child('class-4').on('value', function(snap) {
     console.log(snap.val());
-    $scope.$apply(function() { $scope.cohort = snap.val(); });
+    $scope.$apply(function() { $scope.cohort = snap.val() });
   });
 }]);
 
