@@ -12,7 +12,7 @@ AndelaKoans.factory('Refs', function() {
     username = prompt('Please enter your name');
     localStorage.setItem("username", username);
   }
-  var timestamp = Number(new Date);
+  var timestamp = Number(new Date());
 
   return {
     cohort:  rootRef.child('class-4'),
@@ -26,7 +26,7 @@ AndelaKoans.factory('Reporter', ['Refs', function(Refs) {
     push: function(result, cb) {
       Refs.history.push(result, cb);
     }
-  }
+  };
 }]);
 
 AndelaKoans.controller('ResultsCtrl', ['$scope','Refs', function($scope, Refs) {
@@ -41,10 +41,10 @@ AndelaKoans.directive('student', function() {
   return {
     restrict: 'E',
     controller: ['$scope', 'Refs', function($scope, Refs) {
-      Refs.cohort.child($scope.name).child('results').orderByKey().limitToLast(1).on("child_added", function(snap) {
+      Refs.cohort.child($scope.name).child('results').orderByKey().limitToLast(1).on("value", function(snap) {
         console.log('results updated', snap.key(), snap.val());
         $scope.$apply(function() {
-          $scope.results = snap.val();
+          $scope.results = _.first(_.values(snap.val()));
         });
       });
     }],
