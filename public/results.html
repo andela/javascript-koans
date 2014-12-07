@@ -4,35 +4,22 @@
 <head>
   <title>Javascript Koans</title>
   <link rel="stylesheet" type="text/css" href="css/results.css">
+  <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css">
+  <link rel="stylesheet" type="text/css" href="lib/angular-material/themes/brown-theme.css">
   <script type="text/javascript" src="lib/lodash/dist/lodash.js"></script>
   <script type="text/javascript" src="lib/angular/angular.js"></script>
+  <script type="text/javascript" src="lib/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="lib/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="lib/angular-material/angular-material.js"></script>
   <script type="text/javascript" src="lib/firebase/firebase.js"></script>
-
-  <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
-  <script type="text/javascript" src="lib/jasmine/jskoans-jasmine-html.js"></script>
-
-  <script type="text/javascript" src="lib/FILL_ME_IN.js"></script>
-
-  <script type="text/javascript" src="koans/AboutExpects.js"></script>
-  <script type="text/javascript" src="koans/AboutObjects.js"></script>
-  <script type="text/javascript" src="koans/AboutControlStructures.js"></script>
-  <script type="text/javascript" src="koans/AboutArrays.js"></script>
-  <script type="text/javascript" src="koans/AboutFunctions.js"></script>
-  <script type="text/javascript" src="koans/AboutMutability.js"></script>
-  <script type="text/javascript" src="koans/AboutHigherOrderFunctions.js"></script>
-  <script type="text/javascript" src="koans/AboutApplyingWhatWeHaveLearnt.js"></script>
-
   <script type="text/javascript" src="application.js"></script>
 </head>
 <body ng-app="AndelaKoans">
-<div ng-controller="ResultsCtrl">
-  <table style="width: 100%">
-    <tr ng-repeat="(name, student) in cohort" ng-init="last = latest(student.results)">
-      <td ng-bind="name" style="width: 20%"></td>
-      <td class="result" ng-repeat="(id, result) in last" ng-class="{passed: (result.passed==='true')}" ng-title="{{id}}"></td>
-    </tr>
-  </table>
+<div ng-controller="ResultsCtrl" layout="column" layout-fill>
+  <student flex layout="row" layout-fill ng-repeat="(name, student) in cohort">
+    <name flex="10" ng-bind="name"></name>
+    <result flex ng-repeat="(id, result) in results" ng-class="{passed: (result.passed==='true')}" ng-id="{{id}}" ng-title="{{result.title}}"></result>
+  </student>
 </div>
 </body>
 </html>

@@ -28,6 +28,6 @@ describe("About Numbers", function() {
 
   it("should understand the nature of infinity", function() {
     var actualValue = 42/0;
-    expect(actualValue).toBe(Infinity);
+    expect(actualValue).toBe(FILL_ME_IN);
   });
 });

@@ -1,6 +1,14 @@
-td.result {
-  background-color: #ddd;
+student {
+  margin-bottom: 1px solid black;
 }
-td.result.passed {
+name {
+  width: 20%;
+}
+result {
+  background-color: #ddd;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+result.passed {
   background-color: green;
 }
