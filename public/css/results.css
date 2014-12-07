@@ -1,0 +1,6 @@
+td.result {
+  background-color: #ddd;
+}
+td.result.passed {
+  background-color: green;
+}

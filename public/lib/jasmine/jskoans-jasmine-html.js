@@ -184,13 +184,14 @@ JsKoansReporter.prototype.reportSpecResults = function(spec) {
   for (var i = 0; i < resultItems.length; i++) {
     var result = resultItems[i];
     var props = {
+      title: String(spec.getFullName()),
       actual: String(result.actual),
       contains: String(result.contains),
       expected: String(result.expected),
       matcherName: String(result.matcherName),
       message: String(result.message),
-      passed: result.passed_,
-      type: result.type
+      passed: String(result.passed_),
+      type: String(result.type)
     };
     Reporter.push(props);
 

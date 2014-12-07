@@ -38,8 +38,7 @@ AndelaKoans.factory('Reporter', ['Refs',
 
 AndelaKoans.controller('ResultsCtrl', ['$scope','Refs', function($scope, Refs) {
   $scope.latest = function(results) {
-    window.values = _.values(results);
-    return _.last(values);
+    return _.last(_.values(results));
   }
 
   Refs.root.child('class-4').on('value', function(snap) {

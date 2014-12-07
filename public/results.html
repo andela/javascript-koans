@@ -3,8 +3,7 @@
 <html>
 <head>
   <title>Javascript Koans</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine/jskoans-jasmine.css">
-
+  <link rel="stylesheet" type="text/css" href="css/results.css">
   <script type="text/javascript" src="lib/lodash/dist/lodash.js"></script>
   <script type="text/javascript" src="lib/angular/angular.js"></script>
   <script type="text/javascript" src="lib/firebase/firebase.js"></script>
@@ -12,8 +11,6 @@
   <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
   <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
   <script type="text/javascript" src="lib/jasmine/jskoans-jasmine-html.js"></script>
-
-  <script type="text/javascript" src="lib/usnderscore-min.js"></script>
 
   <script type="text/javascript" src="lib/FILL_ME_IN.js"></script>
 
@@ -27,25 +24,13 @@
   <script type="text/javascript" src="koans/AboutApplyingWhatWeHaveLearnt.js"></script>
 
   <script type="text/javascript" src="application.js"></script>
-  <style>
-  td.passed {
-    background-color: green;
-  }
-  </style>
 </head>
 <body ng-app="AndelaKoans">
 <div ng-controller="ResultsCtrl">
   <table style="width: 100%">
-    <tr ng-repeat="(key, student) in cohort" ng-init="last = latest(student.results)">
-      <td ng-bind="key"></td>
-      <td>
-        <table style="width: 100%">
-          <tr ng-repeat="(timestamp, resultset) in student.results">
-            <td ng-bind="timestamp"></td>
-            <td ng-repeat="result in resultset" ng-class="{passed: result.passed}">{{result.passed}}</td>
-          </tr>
-        </table>
-      </td>
+    <tr ng-repeat="(name, student) in cohort" ng-init="last = latest(student.results)">
+      <td ng-bind="name" style="width: 20%"></td>
+      <td class="result" ng-repeat="(id, result) in last" ng-class="{passed: (result.passed==='true')}" ng-title="{{id}}"></td>
     </tr>
   </table>
 </div>
