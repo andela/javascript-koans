@@ -15,10 +15,12 @@
   <script type="text/javascript" src="application.js"></script>
 </head>
 <body ng-app="AndelaKoans">
-<div ng-controller="ResultsCtrl" layout="column" layout-fill>
-  <student flex layout="row" layout-fill ng-repeat="(name, student) in cohort">
+<div ng-controller="ResultsCtrl" layout="column">
+  <student flex layout="row" layout-fill ng-repeat="(name, timestamp) in students">
     <name flex="10" ng-bind="name"></name>
-    <result flex ng-repeat="(id, result) in results" ng-class="{passed: (result.passed==='true')}" ng-id="{{id}}" ng-title="{{result.title}}"></result>
+    <div flex layout="row">
+      <result flex ng-repeat="(id, result) in results" ng-class="{passed: (result.passed==='true')}" ng-id="{{id}}" ng-title="{{result.title}}"></result>
+    </div>
   </student>
 </div>
 </body>

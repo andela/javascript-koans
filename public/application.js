@@ -6,33 +6,36 @@ AndelaKoans.run(['$rootScope','Reporter', function($rootScope, Reporter) {
 }]);
 
 AndelaKoans.factory('Refs', function() {
-  var rootRef = new Firebase("https://andela-koans.firebaseio.com/");
+  var rootRef = new Firebase("https://test-andela-koans.firebaseio.com/");
   var username = localStorage.getItem("username");
   while(!username) {
     username = prompt('Please enter your name');
     localStorage.setItem("username", username);
   }
-  var timestamp = Number(new Date());
 
   return {
     cohort:  rootRef.child('class-4'),
-    results: rootRef.child('class-4').child(username).child('results'),
-    history: rootRef.child('class-4').child(username).child('results').child(timestamp)
+    students: rootRef.child('class-4').child('students'),
+    history: rootRef.child('class-4').child('results'),
+    currentUser: rootRef.child('class-4').child('students').child(username)
   };
 });
 
 AndelaKoans.factory('Reporter', ['Refs', function(Refs) {
+  var username = localStorage.getItem("username");
+  var timestamp = Number(new Date());
   return {
     push: function(result, cb) {
-      Refs.history.push(result, cb);
+      Refs.history.child(username).child(timestamp).push(result, cb);
+      Refs.currentUser.set(timestamp, cb);
     }
   };
 }]);
 
 AndelaKoans.controller('ResultsCtrl', ['$scope','Refs', function($scope, Refs) {
-  Refs.cohort.once('value', function(snap) {
+  Refs.students.on('value', function(snap) {
     $scope.$apply(function() {
-      $scope.cohort = snap.val();
+      $scope.students = snap.val();
     });
   });
 }]);
@@ -41,12 +44,16 @@ AndelaKoans.directive('student', function() {
   return {
     restrict: 'E',
     controller: ['$scope', 'Refs', function($scope, Refs) {
-      Refs.cohort.child($scope.name).child('results').orderByKey().limitToLast(1).on("value", function(snap) {
-        console.log('results updated', snap.key(), snap.val());
-        $scope.$apply(function() {
-          $scope.results = _.first(_.values(snap.val()));
+
+      Refs.students.child($scope.name).on("value", function(snap) {
+        Refs.history.child($scope.name).child(snap.val()).on("value", function(resultSnap) {
+          console.log('results updated', resultSnap.key(), Object.keys(resultSnap.val()).length);
+          $scope.$apply(function() {
+            $scope.results = resultSnap.val();
+          });
         });
       });
+
     }],
     link: function(scope, element, attrs) {
     }

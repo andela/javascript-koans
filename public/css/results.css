@@ -1,14 +1,21 @@
 student {
   margin-bottom: 1px solid black;
 }
+
 name {
   width: 20%;
 }
+
 result {
   background-color: #ddd;
-  border-right: 1px solid white;
-  border-bottom: 1px solid white;
+  padding-right: 1px solid white;
+  border-radius: 50%;
+  max-width: 100%;
+  width: 16px;
+  height: 16px;
+  margin: auto 0;
 }
+
 result.passed {
-  background-color: green;
+  background-color: rgb(129, 219, 129);
 }
