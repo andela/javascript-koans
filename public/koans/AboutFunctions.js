@@ -12,6 +12,7 @@ describe("About Functions", function() {
 
   describe("About Internal Variables Overriding Outer Variables", function(){
 
+
         var message = "Outer";
 
         function getMessage() {
