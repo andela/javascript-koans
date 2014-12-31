@@ -13,6 +13,9 @@ describe("About Objects", function () {
 
     it("should confirm that properties are case sensitive", function () {
       expect(megalomaniac.henchwoman).toBe(FILL_ME_IN);
+    });
+
+    it("should confirm that properties are also case sensitive", function(){
       expect(megalomaniac.henchWoman).toBe(FILL_ME_IN);
     });
   });
@@ -32,7 +35,9 @@ describe("About Objects", function () {
     expect(FILL_ME_IN).toMatch(battleCry);
   });
 
-  it("should confirm that when a function is attached to an object, 'this' refers to the object", function () {
+
+  describe("About 'this' refering to the Object when a Function is attached to an Object", function(){
+
     var currentDate = new Date();
     var currentYear = (currentDate.getFullYear());
     var megalomaniac = {
@@ -44,8 +49,14 @@ describe("About Objects", function () {
       }
     };
 
-    expect(currentYear).toBe(FILL_ME_IN);
-    expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+    it("should understand the value returned here", function () {
+      expect(currentYear).toBe(FILL_ME_IN);
+    });
+
+    it("should confirm that when a function is attached to an object, 'this' refers to the object", function () {
+      expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+    });
+
   });
 
   describe("'in' keyword", function () {
@@ -73,20 +84,29 @@ describe("About Objects", function () {
     });
   });
 
-  it("should know that properties can be added and deleted", function () {
-    var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+  describe("About Addition and Deleting Of Properties", function(){
 
-    megalomaniac.secretary = "Agent Smith";
-    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+      var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    delete megalomaniac.henchman;
-    expect("henchman" in megalomaniac).toBe(FILL_ME_IN);
+      it("should understand how properties can be added or deleted", function(){
+        expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+      });
+
+      it("should know that properties can be added", function(){
+        megalomaniac.secretary = "Agent Smith";
+        expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+      });
+
+      it("should know that properties can be deleted", function(){
+        delete megalomaniac.henchman;
+        expect("henchman" in megalomaniac).toBe(FILL_ME_IN);
+      });
   });
 
 
-  it("should use prototype to add to all objects", function () {
+ describe("About Using Prototype To Add To All Objects", function(){
+
       function Circle(radius)
       {
         this.radius = radius;
@@ -96,14 +116,27 @@ describe("About Objects", function () {
       var colouredCircle = new Circle(5);
       colouredCircle.colour = "red";
 
-      expect(simpleCircle.colour).toBe(FILL_ME_IN);
-      expect(colouredCircle.colour).toBe(FILL_ME_IN);
 
       Circle.prototype.describe = function () {
         return "This circle has a radius of: " + this.radius;
       };
 
-      expect(simpleCircle.describe()).toBe(FILL_ME_IN);
-      expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+      it("should give a value ", function(){
+         expect(simpleCircle.colour).toBe(FILL_ME_IN);
+      });
+
+      it("should expect the value of this Object", function(){
+         expect(colouredCircle.colour).toBe(FILL_ME_IN);
+      });
+
+      it("should understand prototyping ", function(){
+         expect(simpleCircle.describe()).toBe(FILL_ME_IN);
+      });
+
+      it("should understand how prototype works", function(){
+         expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+      });
+
   });
+
 });
