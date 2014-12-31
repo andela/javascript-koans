@@ -104,7 +104,6 @@ describe("About Objects", function () {
       });
   });
 
-
  describe("About Using Prototype To Add To All Objects", function(){
 
       function Circle(radius)
