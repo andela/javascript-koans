@@ -1,7 +1,7 @@
 //We shall contemplate truth by testing reality, via spec expectations.
 describe("About Arrays: ", function() {
 
-  isArray = function (obj) {
+  isArray = function(obj) {
     if (typeof(obj) === 'object' && obj.hasOwnProperty('length')) {
       return true;
     }
@@ -13,17 +13,24 @@ describe("About Arrays: ", function() {
     var emptyArray = [];
 
     it('should check if of type array', function() {
-        expect(isArray(emptyArray)).toBeFalsy(); //this should be true
-      });
-
-      it('should check array length', function() {
-        expect(emptyArray.length).toEqual(FILL_ME_IN);
-      });
+      expect(isArray(emptyArray)).toBeFalsy(); //this should be true
     });
+
+    it('should check array length', function() {
+      expect(emptyArray.length).toEqual(FILL_ME_IN);
+    });
+  });
 
   describe('Array Values', function() {
 
-    var multiTypeArray = [0, 1, "two", function () { return 3; }, {value1: 4, value2: 5}, [6, 7]];
+    var multiTypeArray = [0, 1, "two", function() {
+        return 3;
+      }, {
+        value1: 4,
+        value2: 5
+      },
+      [6, 7]
+    ];
 
 
     it('should check array value', function() {
@@ -42,10 +49,10 @@ describe("About Arrays: ", function() {
 
   describe('Array Length: ', function() {
 
-      var fourNumberArray = [1,2,3,4],
-          tenEmptyElementArray = new Array(10);
+    var fourNumberArray = [1, 2, 3, 4],
+      tenEmptyElementArray = new Array(10);
 
-    it('should understand array length', function(){
+    it('should understand array length', function() {
       expect(fourNumberArray.length).toEqual(FILL_ME_IN);
     });
 
@@ -72,7 +79,7 @@ describe("About Arrays: ", function() {
     });
 
     it('should return only the first element in the array', function() {
-      expect(array.slice(0,1)).toBe(FILL_ME_IN);
+      expect(array.slice(0, 1)).toBe(FILL_ME_IN);
     });
 
     it('should return at least one element form the array', function() {
@@ -80,7 +87,7 @@ describe("About Arrays: ", function() {
     });
 
     it('should return an empty array', function() {
-      expect(array.slice(2,2)).toBe(FILL_ME_IN);
+      expect(array.slice(2, 2)).toBe(FILL_ME_IN);
     });
 
     it('should return all element in the array from the start index', function() {
@@ -88,19 +95,19 @@ describe("About Arrays: ", function() {
     });
 
     it('should be an empty array', function() {
-      expect(array.slice(3,0)).toBe(FILL_ME_IN);
+      expect(array.slice(3, 0)).toBe(FILL_ME_IN);
     });
 
   });
 
   describe('Array References: ', function() {
 
-    var passedByReference = function (refArray) {
-        refArray[1] = "changed in function";
+    var passedByReference = function(refArray) {
+      refArray[1] = "changed in function";
     }
 
     beforeEach(function() {
-      var array = [ "zero", "one", "two", "three", "four", "five" ];
+      var array = ["zero", "one", "two", "three", "four", "five"];
     });
 
     it('should know array references', function() {
@@ -125,7 +132,7 @@ describe("About Arrays: ", function() {
   describe('Array Push and Pop: ', function() {
 
     beforeEach(function() {
-      var array = [1,2];
+      var array = [1, 2];
     })
 
     it('should understand push', function() {
@@ -144,7 +151,7 @@ describe("About Arrays: ", function() {
   });
 
   describe('Array shift and unshift: ', function() {
-    var array = [1,2];
+    var array = [1, 2];
 
     it('should know about shifting arrays', function() {
       array.unshift(3);
@@ -158,7 +165,7 @@ describe("About Arrays: ", function() {
 
     it('should know what value remains in a shifted array', function() {
       expect(array).toEqual(FILL_ME_IN);
-    }); 
+    });
   });
 
 });
