@@ -9,11 +9,11 @@ h1 {
 }
 
 .jasmine_reporter a:visited, .jasmine_reporter a {
-  color: #303; 
+  color: #645F64;
 }
 
 .jasmine_reporter a:hover, .jasmine_reporter a:active {
-  color: blue; 
+  color: #999;
 }
 
 .run_spec_failed, .run_spec_skipped {
@@ -111,12 +111,9 @@ h1 {
   color: #055;
   white-space: pre;
   padding: .2em 1em;
-  margin-left: 10px;
-  margin-right: 5px;
-  margin-bottom: 10px;
+  margin: 5px 5px 10px 10px;
   border:1px solid green;
   border-radius:3px;
-  /*background: #eef;*/
   border-left-width: 5px;
   border-left-color: #2b542c;
   background-color: rgba(43, 84, 44, 0.1);
@@ -158,13 +155,13 @@ h1 {
   margin-right: 5px;
   max-height: 5em;
   overflow: auto;
-  border: 1px inset red;
+  border: 1px solid #ccc;
   padding: 1em;
   color: #eef;
   border-radius:3px;
   border-left-width: 5px;
   border-left-color: #d9534f; /* Left side border color */
-  background-color: rgba(217, 83, 79, 0.9);
+  background-color: rgba(77, 8, 6, 0.9);
 }
 
 .finished-at {
@@ -221,6 +218,8 @@ h1 {
 
 .description {
   text-decoration: none;
+  font-weight: 500;
+  color: #A63838;
 }
 
 .enlightenment-passed {
