@@ -58,7 +58,8 @@ describe("About Functions", function() {
       var newFunction = function doMysteriousThing(param)
       {
         return makerValue + param;
-      } 
+      }
+    }
 
     var mysteryFunction3 = makeMysteryFunction(3);
     var mysteryFunction5 = makeMysteryFunction(5);

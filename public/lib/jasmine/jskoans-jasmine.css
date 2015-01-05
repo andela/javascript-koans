@@ -58,6 +58,7 @@ h1 {
   border: 1px outset gray;
   margin: 5px 0;
   padding-left: 1em;
+  border-radius: 5px;
 }
 
 .suite .suite {
@@ -69,7 +70,10 @@ h1 {
 }
 
 .suite.failed, .suite.failed-skipped {
-  background-color: #fdd;
+  border:1px solid #ccc;
+  border-left-color: #5bc0de;
+  border-left-width: 5px;
+  background-color: rgba(91, 192, 222, 0.1);
 }
 
 .spec {
@@ -84,8 +88,13 @@ h1 {
 }
 
 .spec.failed, .spec.failed-skipped {
-  background-color: #fbb;
-  border-color: red;
+  /*border-color: red;*/
+  border:1px solid #ccc;
+  border-radius:3px;
+  border-left-width: 5px;
+  border-left-color: #f0ad4e;
+  background-color: rgba(240, 173, 78, 0.1);
+
 }
 
 .spec.passed, .spec.passed-skipped {
@@ -105,7 +114,13 @@ h1 {
   margin-left: 10px;
   margin-right: 5px;
   margin-bottom: 10px;
-  background: #eef;
+  border:1px solid green;
+  border-radius:3px;
+  /*background: #eef;*/
+  border-left-width: 5px;
+  border-left-color: #2b542c;
+  background-color: rgba(43, 84, 44, 0.1);
+
 }
 
 .meditate {
@@ -146,7 +161,10 @@ h1 {
   border: 1px inset red;
   padding: 1em;
   color: #eef;
-  background: #000;
+  border-radius:3px;
+  border-left-width: 5px;
+  border-left-color: #d9534f; /* Left side border color */
+  background-color: rgba(217, 83, 79, 0.9);
 }
 
 .finished-at {
@@ -182,10 +200,14 @@ h1 {
 }
 
 .progress {
+    /*border:1px solid black;*/
+    margin-right: 2em;
+    border-radius:5px;
+    /*background: #576779;*/
 }
 
 .completion {
-  font-size: .9em;
+  font-size: 1.2em;
   padding-top: 10px;
 }
 
@@ -206,5 +228,7 @@ h1 {
   font-weight: bold;
 }
 .enlightenment-failed {
-  color: #550;
+  /* color: #550; */
+  color: #ff6a58;
+  font-size:1.5em;
 }
