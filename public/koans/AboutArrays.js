@@ -34,11 +34,11 @@ describe("About Arrays: ", function() {
 
 
     it('should check array value', function() {
-      expects(multiTypeArray[2]).toBe(FILL_ME_IN);
+      expect(multiTypeArray[2]).toBe(FILL_ME_IN);
     });
 
     it('should check the return value of the function in an array', function() {
-      expects(multiTypeArray[3]()).toEqual(FILL_ME_IN);
+      expect(multiTypeArray[3]()).toEqual(FILL_ME_IN);
     });
 
     it('should check for nested cases', function() {
